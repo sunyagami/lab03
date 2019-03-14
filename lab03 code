@@ -1,0 +1,26 @@
+float Analogin=0;
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  Serial.println("Hello,world!");
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  int i;
+  float val,R1,vin;
+  for(i=0;i<20;i++)
+  {
+      val = 0.7 * val + 0.3 * analogRead(A1);
+      delay(100);
+  }
+  vin = val * 2.5 / 4095;
+  R1 = vin * 1085100 / 2.5;
+  Serial.print("value = ");
+  Serial.println(val);
+  Serial.print("V = ");
+  Serial.println(vin);
+  Serial.print("R1 = ");
+  Serial.println(R1);
+  delay(500);
+}
